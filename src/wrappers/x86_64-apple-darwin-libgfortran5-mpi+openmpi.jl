@@ -8,15 +8,15 @@ using SCALAPACK64_jll
 using libblastrampoline_jll
 using OpenMPI_jll
 JLLWrappers.@generate_wrapper_header("MUMPS64")
-JLLWrappers.@declare_library_product(libcmumpspar64, "@rpath/libcmumpspar64.dylib")
-JLLWrappers.@declare_library_product(libdmumpspar64, "@rpath/libdmumpspar64.dylib")
 JLLWrappers.@declare_library_product(libsmumpspar64, "@rpath/libsmumpspar64.dylib")
+JLLWrappers.@declare_library_product(libdmumpspar64, "@rpath/libdmumpspar64.dylib")
+JLLWrappers.@declare_library_product(libcmumpspar64, "@rpath/libcmumpspar64.dylib")
 JLLWrappers.@declare_library_product(libzmumpspar64, "@rpath/libzmumpspar64.dylib")
 function __init__()
     JLLWrappers.@generate_init_header(LLVMOpenMP_jll, METIS_jll, PARMETIS_jll, SCALAPACK64_jll, libblastrampoline_jll, OpenMPI_jll, MPIPreferences)
     JLLWrappers.@init_library_product(
-        libcmumpspar64,
-        "lib/libcmumpspar64.dylib",
+        libsmumpspar64,
+        "lib/libsmumpspar64.dylib",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
@@ -27,8 +27,8 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
-        libsmumpspar64,
-        "lib/libsmumpspar64.dylib",
+        libcmumpspar64,
+        "lib/libcmumpspar64.dylib",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
